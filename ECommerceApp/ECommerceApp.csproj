@@ -7,4 +7,12 @@
     <UseBlazorWebAssembly>true</UseBlazorWebAssembly>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Components\Pages\LearnBlazor\LearnBlazorComponents\GrandChildComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Components\Pages\LearnBlazor\LearnBlazorComponents\GrandChildComponent.razor" />
+  </ItemGroup>
+
 </Project>

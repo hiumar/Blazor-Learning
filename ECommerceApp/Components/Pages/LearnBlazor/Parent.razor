@@ -1,0 +1,19 @@
+﻿@page "/Parent"
+<h3>Parent</h3>
+<CascadingValue Value="MessageForGrandChild">
+<_ChildComponent 
+    Title="Child component is here"> 
+     <Childcontent >
+         This is child component 
+     </Childcontent>
+</_ChildComponent>
+</CascadingValue>
+<p>@messageText </p>
+@code {
+    public string MessageForGrandChild = "This is message from parent to grand child";
+    public string messageText = "";
+    private void ShowMessage(){
+
+        messageText = "button in side child component was cliked";
+    }
+}

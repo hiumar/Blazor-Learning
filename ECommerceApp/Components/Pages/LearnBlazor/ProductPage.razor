@@ -1,0 +1,83 @@
+﻿@page "/ProductPage"
+@rendermode  InteractiveServer
+<h2 class="text-primary">Product Page</h2>
+Favorite Count: @FavoriteCount <br/>
+Selected Product: @SelectedProduct
+<div class="p-2 ">
+    <div class="row">
+        @foreach (var item in products)
+        {
+            <_IndividualComponent product="item" OnFavoriteUpdated="FavoriteCountChnage"
+                         OnSelectedProductChange="UpdateSelectedProduct"></_IndividualComponent>
+            
+        }
+    </div>
+    <div class="row p-4">
+        <input type="button" class="btn btn-success" style="width:100px"
+               value="Counter" @onclick="()=>IncrementCount(5)" />
+        Count: @Count
+    </div>
+</div>
+
+@code {
+    public int Count { get; set; } = 0;
+    public string SelectedProduct { get; set; }
+    public int FavoriteCount { get; set; } = 0;
+    List<Product> products = new List<Product>();
+    protected override void OnInitialized()
+    {
+        products.Add(new()
+            {
+
+                Id = 1,
+                Name = "This my first 1",
+                IsActive = true,
+                Price = 5,
+                ProductProperties = new List<Product_Prop>()
+            {
+                 new Product_Prop{Id=1,Key="Color", Value="Red"},
+                 new Product_Prop{Id=1,Key="Size", Value="2c"},
+                 new Product_Prop{Id=1,Key="Flavor", Value="Rose"},
+            }
+            });
+
+        products.Add(new()
+            {
+
+                Id = 2,
+                Name = "This second product",
+                IsActive = true,
+                Price = 2,
+                ProductProperties = new List<Product_Prop>()
+            {
+                 new Product_Prop{Id=1,Key="Color", Value="blue"},
+                 new Product_Prop{Id=1,Key="Size", Value="50"},
+                 new Product_Prop{Id=1,Key="Flavor", Value="Chambaili"},
+            }
+            });
+        base.OnInitialized();
+    }
+
+    private void IncrementCount(int count)
+    {
+        Count+=count;
+    }
+    protected void FavoriteCountChnage(bool isSelected)
+    {
+        if (isSelected)
+        {
+            FavoriteCount++;
+        }
+        else
+        {
+            FavoriteCount --;
+        }
+    }
+    protected void UpdateSelectedProduct(string productName)
+    {
+        SelectedProduct = productName;
+    }
+
+    
+}
+

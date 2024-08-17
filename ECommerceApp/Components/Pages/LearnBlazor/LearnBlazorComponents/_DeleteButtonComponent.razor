@@ -1,0 +1,14 @@
+﻿
+
+<button type="button" class="btn btn-danger" style="width:100px" @onclick="()=>RemoveProduct(ProductId)">Delete</button>
+
+@code {
+
+    [Parameter]
+    public int ProductId{ get; set; }
+  
+    private void RemoveProduct(int proId)
+    {
+       
+    }
+}
